@@ -1,6 +1,5 @@
-#!/usr/bin/env python3
 """
-FastAPI Metrics Monitoring System Startup Script
+Metrics Monitoring System Startup Script
 """
 
 import uvicorn
