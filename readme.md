@@ -71,18 +71,18 @@ fastapi-metrics-app/
 1. Start the services:
 
    ```bash
-   git clone <your-repo>
+   git clone <repo>
    cd fastapi-metrics-app
    docker-compose up --build
    ```
 2. Access the services in your browser or via API clients.
 
    ```bash
-      - FastAPI App: http://localhost:8000
-      - API Documentation: http://localhost:8000/docs
-      - Prometheus: http://localhost:9090
-      - Grafana: http://localhost:3000
-      - Metrics: http://localhost:8000/metrics
+   - FastAPI App: http://localhost:8000
+   - API Documentation: http://localhost:8000/docs
+   - Prometheus: http://localhost:9090
+   - Grafana: http://localhost:3000
+   - Metrics: http://localhost:8000/metrics
    ```
 
 
@@ -145,20 +145,18 @@ fastapi-metrics-app/
 ## Example Prometheus Queries
 
 ```bash
-   # Request rate (requests per second)
-   rate(http_requests_total[5m])
+# Request rate (requests per second)
+rate(http_requests_total[5m])
 
-   # 95th percentile latency
-   histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le))
+# 95th percentile latency
+histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le))
 
-   # Error rate
-   rate(http_requests_total{status_code=~"5.."}[5m]) / rate(http_requests_total[5m])
+# Error rate
+rate(http_requests_total{status_code=~"5.."}[5m]) / rate(http_requests_total[5m])
 
-   # CPU usage rate
-   rate(process_cpu_seconds_total[5m])
+# CPU usage rate
+rate(process_cpu_seconds_total[5m])
 
-   # Memory usage trend
-   process_resident_memory_bytes
+# Memory usage trend
+process_resident_memory_bytes
 ```
-
-> Grafana Login → **admin / admin** (default)
